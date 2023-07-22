@@ -4,8 +4,18 @@
     top: 1rem;
     width: 80%;
     height: 3rem;
+    margin-left: 10%;
 }
 
 .danger{
     background-color: red;
+}
+
+.warning{
+    background-color: yellow;
+}
+
+
+.success{
+    background-color: green;
 }

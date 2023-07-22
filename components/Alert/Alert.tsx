@@ -2,11 +2,14 @@ import styles from './Alert.module.css'
 
 interface AlertProps {
     message: string;
+    type:AlertTypes
   }
 
-const Alert: React.FC<AlertProps> = ({ message}) => {
+export type AlertTypes =  'danger'|'success'|'warning';
+
+const Alert: React.FC<AlertProps> = ({ message,type}) => {
     return (
-        <div className={`${styles.alert} ${styles.danger}`}>
+        <div className={`${styles.alert} ${styles[type]}`}>
         {message}
       </div>
     );

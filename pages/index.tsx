@@ -4,11 +4,8 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { useAlert } from '../contexts/AlertContext'
 const Home: NextPage = () => {
-const {message,showAlert,hideAlert} = useAlert();
+const {danger,warning,success} = useAlert();
 
-  const handleClick = (value:string) =>{
-    showAlert(value)
-  }
 
 
   return (
@@ -20,9 +17,12 @@ const {message,showAlert,hideAlert} = useAlert();
       </Head>
 
       <main className={styles.main}>
-      <button onClick={()=>{handleClick("Alert 1")}}>Show Alert1</button>
+      <button onClick={()=>{danger("Alert 1")}}>Show Alert1</button>
       <div>xx</div>
-      <button onClick={()=>{handleClick("Alert 2")}}>Show Alert2</button>
+      <button onClick={()=>{warning("Alert 2")}}>Show Alert2</button>
+
+      <button onClick={()=>{success("Alert 3")}}>Show Alert2</button>
+
       </main>
       <footer className={styles.footer}>
         <a
