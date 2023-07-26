@@ -3,10 +3,12 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { useAlert } from '../contexts/AlertContext'
+import { useState } from 'react'
+import Sidebar from '../components/Sidebar/Sidebar'
 const Home: NextPage = () => {
 const {danger,warning,success} = useAlert();
 
-
+const [sidebarIsOpen,setSidebarIsOpen] = useState(false);
 
   return (
     <div className={styles.container}>
@@ -22,6 +24,7 @@ const {danger,warning,success} = useAlert();
       <button onClick={()=>{warning("Alert 2")}}>Show Alert2</button>
 
       <button onClick={()=>{success("Alert 3")}}>Show Alert2</button>
+      <button onClick={()=>{setSidebarIsOpen(!sidebarIsOpen)}}>Toggle Sidebar</button>
 
       </main>
       <footer className={styles.footer}>
@@ -36,6 +39,12 @@ const {danger,warning,success} = useAlert();
           </span>
         </a>
       </footer>
+      <Sidebar isOpen={sidebarIsOpen} onClose={setSidebarIsOpen}>
+        <p>Blah Blah</p>
+        <p>Blah Blah</p>
+        <p>Blah Blah</p>
+        <p>Blah Blah</p>
+      </Sidebar>
     </div>
   )
 }
