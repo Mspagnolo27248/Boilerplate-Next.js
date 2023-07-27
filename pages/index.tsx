@@ -5,9 +5,10 @@ import styles from '../styles/Home.module.css'
 import { useAlert } from '../contexts/AlertContext'
 import { useState } from 'react'
 import Sidebar from '../components/Sidebar/Sidebar'
+import UnsavedChangesAlert from '../components/UnsavedChangesAlert/UnsavedChangesAlert'
 const Home: NextPage = () => {
 const {danger,warning,success} = useAlert();
-
+const [hasUnsavedChanges,setHasUnsavedChanges] = useState(false)
 const [sidebarIsOpen,setSidebarIsOpen] = useState(false);
 
   return (
@@ -25,7 +26,7 @@ const [sidebarIsOpen,setSidebarIsOpen] = useState(false);
 
       <button onClick={()=>{success("Alert 3")}}>Show Alert2</button>
       <button onClick={()=>{setSidebarIsOpen(!sidebarIsOpen)}}>Toggle Sidebar</button>
-
+      <button onClick={()=>{setHasUnsavedChanges(!hasUnsavedChanges)}}>Toggle Saved Changes</button>
       </main>
       <footer className={styles.footer}>
         <a
@@ -45,6 +46,7 @@ const [sidebarIsOpen,setSidebarIsOpen] = useState(false);
         <p>Blah Blah</p>
         <p>Blah Blah</p>
       </Sidebar>
+      <UnsavedChangesAlert hasUnsavedChanges={hasUnsavedChanges}/>
     </div>
   )
 }
